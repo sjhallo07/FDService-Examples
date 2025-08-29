@@ -1,0 +1,21 @@
+### Registro de usuario
+POST http://localhost:4000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpass123"
+}
+
+### Login de usuario
+POST http://localhost:4000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpass123"
+}
+
+### Ruta protegida (reemplaza TOKEN por el valor recibido en login)
+GET http://localhost:4000/api/auth/me
+Authorization: Bearer TOKEN

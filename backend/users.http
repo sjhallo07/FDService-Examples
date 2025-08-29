@@ -1,0 +1,16 @@
+### Listar usuarios
+GET http://localhost:4000/api/users
+
+### Obtener usuario por username
+GET http://localhost:4000/api/users/testuser
+
+### Actualizar contraseña de usuario
+PUT http://localhost:4000/api/users/testuser
+Content-Type: application/json
+
+{
+  "password": "nuevoPass123"
+}
+
+### Eliminar usuario
+DELETE http://localhost:4000/api/users/testuser
