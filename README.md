@@ -1,24 +1,36 @@
-# FDService-Examples
 
-## This repo has sample code for using/extending the Fonteva Services platform.
+# TurboBujías - Tienda Online de Repuestos
 
-### [Payment Engine](PaymentEngine_README.md)
-   This section outlines how to extend and overwrite the Fonteva Payment framework. Many folks have requirements
-   beyond what is incuded in the base product. This engine allows developers to fulfill that requirement.
-   Included in this repo are full code examples that can be directly deployed.
+![Logo TurboBujías](backend/public/LOGOTIPOFONDONEGRO.png)
 
-### [Service Examples](ServiceExamples_README.md)
-   The Fonteva Services platform ships two types of services. Both are outlined with examples here. You will learn
-   how to extend and overwrite services that are shipped as part of the platform.
+Bienvenido al repositorio de **TurboBujías**, una tienda online de repuestos automotrices con experiencia interactiva, animaciones modernas y carrito funcional.
 
-### [Wrapper Examples](WrapperExamples_README.md)
-   All SObjects are wrapped in Apex classes to make sure that DMLs occur through our services. Examples show how to extend
-   wrappers for any custom fields added outside of the platform.
-   
-### [Spark Plugs Examples](SparkPlugs_README.md)
-   Spark Plugs enable custom UI inside a Fonteva Platform flow. This can be done seamlessly in 
-   multiple locations. Examples will show what the Lightning Component needs to look like and the CMT (Custom Metadata Type).
+## Características principales
 
-### [Other Examples](Other_README.MD)
-   This section outlines other miscellaneous actions on the Fonteva Platform, such as contextually disabling
-   triggers.
+- Catálogo de productos con animaciones y diseño responsivo.
+- Carrito de compras interactivo (agrega, elimina, vacía y suma totales en tiempo real).
+- Logo nítido y responsivo en todas las páginas principales.
+- Código base listo para extender con backend, autenticación y más productos.
+
+## ¿Cómo probar la tienda?
+
+1. Ve a la carpeta `backend/public/` y abre `landing.html` en tu navegador.
+2. Interactúa con el catálogo, agrega productos al carrito y disfruta de la experiencia visual.
+3. El logo principal aparece en todas las secciones y se adapta a cualquier dispositivo.
+
+## Estructura del repositorio
+
+- `backend/public/landing.html`: Página principal de la tienda online.
+- `backend/public/app.css`: Estilos y animaciones para la tienda y el carrito.
+- `backend/public/LOGOTIPOFONDONEGRO.png`: Logo principal de la tienda.
+- `backend/public/index.html`: Redirección y logo global.
+
+## Créditos y ejemplos legacy
+
+Este repositorio también incluye ejemplos de integración con la plataforma Fonteva Services:
+
+- [Payment Engine](PaymentEngine_README.md)
+- [Service Examples](ServiceExamples_README.md)
+- [Wrapper Examples](WrapperExamples_README.md)
+- [Spark Plugs Examples](SparkPlugs_README.md)
+- [Other Examples](Other_README.MD)

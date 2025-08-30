@@ -4,7 +4,28 @@
     <title>Turbobujias - Landing Demo</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/app.css">
+        <link rel="stylesheet" href="/app.css">
+        <style>
+            .logo-turbobujias-global {
+                display: block;
+                margin: 0 auto 18px auto;
+                max-width: 220px;
+                width: 100%;
+                height: auto;
+                border-radius: 16px;
+                box-shadow: 0 2px 12px #0002;
+                background: #fff;
+                object-fit: contain;
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+                image-rendering: pixelated;
+            }
+            @media (max-width: 700px) {
+                .logo-turbobujias-global {
+                    max-width: 140px;
+                }
+            }
+        </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
@@ -67,7 +88,7 @@
                     <div class="logo-wrapper">
                         <div class="header-logo">
                             <a href="/">
-                                <img alt="Turbobujias" src="/logo-turbobujias.png" style="height:60px;width:auto;border-radius:12px;box-shadow:0 2px 8px #0001;"/>
+                                <img alt="Turbobujias" src="/LOGOTIPOFONDONEGRO.png" class="logo-turbobujias-global"/>
                             </a>
                         </div>
                     </div>
@@ -135,10 +156,112 @@
             </div>
         </div>
         <main class="master-wrapper-content">
-            <!-- Aquí puedes agregar tu landing personalizada, banners, sliders, etc. -->
-            <section style="padding:40px 0;text-align:center;">
-                <h1 style="font-family:Montserrat;font-size:2.5rem;">Bienvenido a Turbobujias</h1>
-                <p style="font-size:1.2rem;max-width:600px;margin:auto;">Esta es una estructura base tipo Turbobujias. Aquí puedes agregar módulos, banners, inventario, formularios o cualquier contenido personalizado.</p>
+            <!-- Logo global en todas las secciones -->
+            <img src="/LOGOTIPOFONDONEGRO.png" alt="Turbobujias" class="logo-turbobujias-global"/>
+            <!-- Tienda online de repuestos con animaciones -->
+            <section class="tienda-repuestos">
+                                <h1 class="tienda-titulo">Bienvenido a la Tienda de Repuestos</h1>
+                                <p class="tienda-desc">Explora nuestro catálogo y agrega productos a tu carrito con animaciones interactivas.</p>
+                                <div id="carrito-container" class="carrito-container">
+                                        <button id="carrito-toggle" class="carrito-toggle">🛒 <span id="carrito-cantidad">0</span></button>
+                                        <div id="carrito" class="carrito">
+                                                <h3>Carrito</h3>
+                                                <ul id="carrito-lista"></ul>
+                                                <div class="carrito-total">Total: $<span id="carrito-total">0.00</span></div>
+                                                <button id="carrito-vaciar" class="btn-agregar" style="margin-top:10px;">Vaciar carrito</button>
+                                        </div>
+                                </div>
+                                <div class="catalogo-productos">
+                                        <div class="producto-card" data-nombre="Bujía Premium" data-precio="10.00" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048314.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048314.png" alt="Bujía" />
+                                                <h3>Bujía Premium</h3>
+                                                <p class="precio">$10.00</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                        <div class="producto-card" data-nombre="Filtro de Aceite" data-precio="8.50" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048320.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048320.png" alt="Filtro de Aceite" />
+                                                <h3>Filtro de Aceite</h3>
+                                                <p class="precio">$8.50</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                        <div class="producto-card" data-nombre="Pastillas de Freno" data-precio="15.00" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048322.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048322.png" alt="Pastillas de Freno" />
+                                                <h3>Pastillas de Freno</h3>
+                                                <p class="precio">$15.00</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                        <div class="producto-card" data-nombre="Filtro de Aire" data-precio="12.00" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048321.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048321.png" alt="Filtro de Aire" />
+                                                <h3>Filtro de Aire</h3>
+                                                <p class="precio">$12.00</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                        <div class="producto-card" data-nombre="Sensor de Oxígeno" data-precio="22.00" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048323.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048323.png" alt="Sensor de Oxígeno" />
+                                                <h3>Sensor de Oxígeno</h3>
+                                                <p class="precio">$22.00</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                        <div class="producto-card" data-nombre="Aceite Sintético" data-precio="30.00" data-img="https://cdn-icons-png.flaticon.com/512/1048/1048324.png">
+                                                <img src="https://cdn-icons-png.flaticon.com/512/1048/1048324.png" alt="Aceite Sintético" />
+                                                <h3>Aceite Sintético</h3>
+                                                <p class="precio">$30.00</p>
+                                                <button class="btn-agregar">Agregar al carrito</button>
+                                        </div>
+                                </div>
+                                <script>
+                                // Carrito funcional y animación al agregar
+                                const carrito = [];
+                                const carritoLista = document.getElementById('carrito-lista');
+                                const carritoTotal = document.getElementById('carrito-total');
+                                const carritoCantidad = document.getElementById('carrito-cantidad');
+                                const carritoDiv = document.getElementById('carrito');
+                                const carritoToggle = document.getElementById('carrito-toggle');
+                                const carritoVaciar = document.getElementById('carrito-vaciar');
+                                function renderCarrito() {
+                                    carritoLista.innerHTML = '';
+                                    let total = 0;
+                                    let cantidad = 0;
+                                    carrito.forEach((item, idx) => {
+                                        total += item.precio * item.cantidad;
+                                        cantidad += item.cantidad;
+                                        const li = document.createElement('li');
+                                        li.innerHTML = `<img src="${item.img}" style="width:32px;height:32px;vertical-align:middle;margin-right:8px;border-radius:6px;box-shadow:0 1px 4px #0001;"> <b>${item.nombre}</b> x${item.cantidad} <span style="color:#38b6ff;font-weight:bold;">$${(item.precio*item.cantidad).toFixed(2)}</span> <button style="margin-left:8px;" onclick="this.parentNode.remove();carrito.splice(${idx},1);renderCarrito();">❌</button>`;
+                                        carritoLista.appendChild(li);
+                                    });
+                                    carritoTotal.textContent = total.toFixed(2);
+                                    carritoCantidad.textContent = cantidad;
+                                    if (carrito.length === 0) {
+                                        carritoLista.innerHTML = '<li style="color:#888;">No hay productos en el carrito.</li>';
+                                    }
+                                }
+                                document.querySelectorAll('.btn-agregar').forEach(btn => {
+                                    btn.addEventListener('click', function(e) {
+                                        const card = this.closest('.producto-card');
+                                        const nombre = card.getAttribute('data-nombre');
+                                        const precio = parseFloat(card.getAttribute('data-precio'));
+                                        const img = card.getAttribute('data-img');
+                                        let prod = carrito.find(p => p.nombre === nombre);
+                                        if (prod) {
+                                            prod.cantidad++;
+                                        } else {
+                                            carrito.push({nombre, precio, img, cantidad:1});
+                                        }
+                                        renderCarrito();
+                                        // Animación visual al agregar
+                                        card.classList.add('agregado');
+                                        setTimeout(()=>card.classList.remove('agregado'), 500);
+                                    });
+                                });
+                                carritoToggle.onclick = () => {
+                                    carritoDiv.classList.toggle('abierto');
+                                };
+                                carritoVaciar.onclick = () => {
+                                    carrito.length = 0;
+                                    renderCarrito();
+                                };
+                                renderCarrito();
+                                </script>
             </section>
         </main>
     </div>

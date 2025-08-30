@@ -1,3 +1,191 @@
+/* Carrito funcional y animaciones adicionales */
+.carrito-container {
+  position: relative;
+  margin-bottom: 32px;
+  text-align: right;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.carrito-toggle {
+  background: #fff;
+  color: #38b6ff;
+  border: 2px solid #38b6ff;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 8px 22px;
+  box-shadow: 0 2px 8px #38b6ff22;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-bottom: 8px;
+}
+.carrito-toggle:hover {
+  background: #38b6ff;
+  color: #fff;
+  box-shadow: 0 4px 16px #38b6ff33;
+}
+.carrito {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 44px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px #4f8cff22;
+  padding: 18px 22px 16px 22px;
+  min-width: 320px;
+  z-index: 10;
+  text-align: left;
+}
+.carrito.abierto {
+  display: block;
+  animation: carritoFadeIn 0.3s;
+}
+@keyframes carritoFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.carrito h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  color: #2d3a4a;
+}
+.carrito-total {
+  font-size: 1.1rem;
+  color: #38b6ff;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.carrito ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 180px;
+  overflow-y: auto;
+}
+.carrito ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f1f5fa;
+  font-size: 1rem;
+}
+.carrito ul li:last-child {
+  border-bottom: none;
+}
+.carrito ul img {
+  margin-right: 8px;
+}
+.producto-card.agregado {
+  box-shadow: 0 0 0 4px #38b6ff55, 0 8px 32px #4f8cff33;
+  animation: pop 0.5s;
+}
+@keyframes pop {
+  0% { transform: scale(1); }
+  60% { transform: scale(1.12) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+/* Tienda online de repuestos - Animaciones y estilos */
+.tienda-repuestos {
+  padding: 40px 0;
+  text-align: center;
+  background: linear-gradient(120deg, #f9fafb 60%, #e0f7fa 100%);
+  border-radius: 18px;
+  margin: 32px auto;
+  max-width: 1100px;
+  box-shadow: 0 4px 24px #0001;
+}
+.tienda-titulo {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2.5rem;
+  color: #2d3a4a;
+  margin-bottom: 10px;
+}
+.tienda-desc {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 32px;
+}
+.catalogo-productos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+}
+.producto-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #4f8cff11;
+  padding: 28px 24px 20px 24px;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s cubic-bezier(.4,2,.6,1), box-shadow 0.25s;
+  position: relative;
+}
+.producto-card:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 32px #4f8cff33;
+  z-index: 2;
+}
+.producto-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 2px 8px #4f8cff22);
+  transition: filter 0.2s;
+}
+.producto-card:hover img {
+  filter: drop-shadow(0 6px 18px #38b6ff44);
+}
+.producto-card h3 {
+  font-size: 1.2rem;
+  color: #2d3a4a;
+  margin-bottom: 8px;
+}
+.producto-card .precio {
+  font-size: 1.1rem;
+  color: #38b6ff;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+.btn-agregar {
+  background: linear-gradient(90deg, #4f8cff 0%, #38b6ff 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #4f8cff22;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+.btn-agregar:hover {
+  background: linear-gradient(90deg, #38b6ff 0%, #4f8cff 100%);
+  box-shadow: 0 4px 16px #4f8cff33;
+  transform: scale(1.07) rotate(-2deg);
+}
+.btn-agregar:active {
+  transform: scale(0.97);
+}
+@media (max-width: 900px) {
+  .catalogo-productos {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .producto-card {
+    width: 90vw;
+    max-width: 340px;
+  }
+}
 /* CSS copiado de https://www.sparkplugs.com/Themes/SparkPlugs/Content/css/app.css */
 /*# sourceMappingURL=app.css.map*/
 *{margin:0;padding:0;text-decoration:none}*,:after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{margin:0;-webkit-text-size-adjust:none}ol,ul{list-style:none}a img{border:none}input[type=button]:-moz-focus-inner,input[type=file]>input[type=button]::-moz-focus-inner,input[type=reset]::-moz-focus-inner,input[type=submit]::-moz-focus-inner{margin:0;border:0;padding:0}input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:none}input:-webkit-autofill{-webkit-box-shadow:inset 0 0 0 1000px #fff}script{display:none!important}body{max-width:100%;overflow-x:hidden;background-color:#fff;font:normal 14px Arial,Helvetica,sans-serif;color:#777}h1,h2,h3,h4,h5,h6{font-family:Montserrat,Arial,Helvetica,sans-serif;font-weight:700;color:#353535}h1{font-size:2.5rem}h2{font-size:2rem}h3{font-size:1.5rem}h4{font-size:1.25rem}h5{font-size:1rem}h6{font-size:.875rem}a{color:#4ab3f1;text-decoration:none}a:hover{text-decoration:underline}table{border-collapse:collapse;border-spacing:0}th,td{padding:8px 12px;text-align:left}button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit}button{cursor:pointer}img{max-width:100%;height:auto;display:block}/* ...CSS truncado por longitud... */
