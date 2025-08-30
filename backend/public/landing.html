@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" class="html-home-page home-body">
 <head>
-    <title>Turbobujias - Landing Demo</title>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="/app.css">
-        <style>
-            .logo-turbobujias-global {
-                display: block;
-                margin: 0 auto 18px auto;
-                max-width: 220px;
-                width: 100%;
-                height: auto;
-                border-radius: 16px;
-                box-shadow: 0 2px 12px #0002;
-                background: #fff;
-                object-fit: contain;
-                image-rendering: -webkit-optimize-contrast;
-                image-rendering: crisp-edges;
-                image-rendering: pixelated;
-            }
-            @media (max-width: 700px) {
-                .logo-turbobujias-global {
-                    max-width: 140px;
-                }
-            }
-        </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Turbobujías | Tienda de Repuestos con Estilo</title>
+    <meta name="description" content="Turbobujías: tienda online de repuestos automotrices con diseño moderno, animaciones, carrito y compras reales. ¡Compra fácil, rápido y seguro!">
+    <meta name="theme-color" content="#e74c3c">
+    <meta property="og:title" content="Turbobujías | Tienda de Repuestos con Estilo">
+    <meta property="og:description" content="Turbobujías: tienda online de repuestos automotrices con diseño moderno, animaciones, carrito y compras reales.">
+    <meta property="og:image" content="/LOGOTIPOFONDONEGRO.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turbobujias.com/">
+    <link rel="icon" type="image/png" href="/LOGOTIPOFONDONEGRO.png">
+    <link rel="stylesheet" href="/app.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="html-home-page home-body">
+            <nav class="navbar" style="position:relative;min-height:80px;">
+                <img src="/LOGOTIPOFONDONEGRO.png" alt="Turbobujias" class="logo-turbobujias-global"/>
+                <ul style="margin-left:340px;">
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#faq">Preguntas frecuentes</a></li>
+                    <li><a href="#micuenta">Mi cuenta</a></li>
+                    <li><a href="#compras">Mis compras</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li>
+                        <span id="nav-cart-icon" class="cart-nav-icon" title="Ver carrito">
+                            🛒<span id="nav-cart-badge" class="cart-badge">0</span>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
     <div class="master-wrapper-page">
         <div class="header">
             <div class="header-upper-wrapper row">
@@ -156,18 +161,25 @@
             </div>
         </div>
         <main class="master-wrapper-content">
-            <!-- Logo global en todas las secciones -->
-            <img src="/LOGOTIPOFONDONEGRO.png" alt="Turbobujias" class="logo-turbobujias-global"/>
-            <!-- Tienda online de repuestos con animaciones -->
+                        <!-- Logo global eliminado aquí, ya está en navbar -->
+                        <a id="inicio"></a>
+                        <!-- Sección Nosotros -->
+                        <section id="nosotros" style="margin:40px auto 0 auto;max-width:900px;background:#fff;border-radius:16px;box-shadow:0 2px 12px #4f8cff11;padding:32px 18px 24px 18px;">
+                            <h2 style="color:#38b6ff;margin-bottom:12px;">Nosotros</h2>
+                            <p style="color:#333;font-size:1.1rem;">En <b>TurboBujías</b> somos apasionados por la innovación automotriz y la atención al cliente. Ofrecemos repuestos de alta calidad y una experiencia de compra moderna, rápida y segura. Nuestro equipo está comprometido con tu satisfacción y la de tu vehículo.</p>
+                        </section>
+                        <!-- Tienda online de repuestos con animaciones -->
+                        <section id="catalogo">
             <section class="tienda-repuestos">
                                 <h1 class="tienda-titulo">Bienvenido a la Tienda de Repuestos</h1>
                                 <p class="tienda-desc">Explora nuestro catálogo y agrega productos a tu carrito con animaciones interactivas.</p>
                                 <div id="carrito-container" class="carrito-container">
-                                        <button id="carrito-toggle" class="carrito-toggle">🛒 <span id="carrito-cantidad">0</span></button>
+                                        <!-- Icono de carrito solo en navbar, no aquí -->
                                         <div id="carrito" class="carrito">
                                                 <h3>Carrito</h3>
                                                 <ul id="carrito-lista"></ul>
                                                 <div class="carrito-total">Total: $<span id="carrito-total">0.00</span></div>
+                                                <button id="carrito-comprar" class="btn-agregar" style="margin-top:10px;background:#38b6ff;">Finalizar compra</button>
                                                 <button id="carrito-vaciar" class="btn-agregar" style="margin-top:10px;">Vaciar carrito</button>
                                         </div>
                                 </div>
@@ -211,58 +223,230 @@
                                 </div>
                                 <script>
                                 // Carrito funcional y animación al agregar
-                                const carrito = [];
-                                const carritoLista = document.getElementById('carrito-lista');
-                                const carritoTotal = document.getElementById('carrito-total');
-                                const carritoCantidad = document.getElementById('carrito-cantidad');
-                                const carritoDiv = document.getElementById('carrito');
-                                const carritoToggle = document.getElementById('carrito-toggle');
-                                const carritoVaciar = document.getElementById('carrito-vaciar');
-                                function renderCarrito() {
-                                    carritoLista.innerHTML = '';
-                                    let total = 0;
-                                    let cantidad = 0;
-                                    carrito.forEach((item, idx) => {
-                                        total += item.precio * item.cantidad;
-                                        cantidad += item.cantidad;
-                                        const li = document.createElement('li');
-                                        li.innerHTML = `<img src="${item.img}" style="width:32px;height:32px;vertical-align:middle;margin-right:8px;border-radius:6px;box-shadow:0 1px 4px #0001;"> <b>${item.nombre}</b> x${item.cantidad} <span style="color:#38b6ff;font-weight:bold;">$${(item.precio*item.cantidad).toFixed(2)}</span> <button style="margin-left:8px;" onclick="this.parentNode.remove();carrito.splice(${idx},1);renderCarrito();">❌</button>`;
-                                        carritoLista.appendChild(li);
-                                    });
-                                    carritoTotal.textContent = total.toFixed(2);
-                                    carritoCantidad.textContent = cantidad;
-                                    if (carrito.length === 0) {
-                                        carritoLista.innerHTML = '<li style="color:#888;">No hay productos en el carrito.</li>';
-                                    }
-                                }
-                                document.querySelectorAll('.btn-agregar').forEach(btn => {
-                                    btn.addEventListener('click', function(e) {
-                                        const card = this.closest('.producto-card');
-                                        const nombre = card.getAttribute('data-nombre');
-                                        const precio = parseFloat(card.getAttribute('data-precio'));
-                                        const img = card.getAttribute('data-img');
-                                        let prod = carrito.find(p => p.nombre === nombre);
-                                        if (prod) {
-                                            prod.cantidad++;
-                                        } else {
-                                            carrito.push({nombre, precio, img, cantidad:1});
-                                        }
-                                        renderCarrito();
-                                        // Animación visual al agregar
-                                        card.classList.add('agregado');
-                                        setTimeout(()=>card.classList.remove('agregado'), 500);
-                                    });
-                                });
-                                carritoToggle.onclick = () => {
-                                    carritoDiv.classList.toggle('abierto');
-                                };
-                                carritoVaciar.onclick = () => {
-                                    carrito.length = 0;
-                                    renderCarrito();
-                                };
-                                renderCarrito();
+                                                                const carrito = [];
+                                                                const carritoLista = document.getElementById('carrito-lista');
+                                                                const carritoTotal = document.getElementById('carrito-total');
+                                                                const carritoDiv = document.getElementById('carrito');
+                                                                const carritoVaciar = document.getElementById('carrito-vaciar');
+                                                                const navCartIcon = document.getElementById('nav-cart-icon');
+                                                                const navCartBadge = document.getElementById('nav-cart-badge');
+                                                                function renderCarrito() {
+                                                                    carritoLista.innerHTML = '';
+                                                                    let total = 0;
+                                                                    let cantidad = 0;
+                                                                    carrito.forEach((item, idx) => {
+                                                                        total += item.precio * item.cantidad;
+                                                                        cantidad += item.cantidad;
+                                                                        const li = document.createElement('li');
+                                                                        li.innerHTML = `<img src="${item.img}" style="width:32px;height:32px;vertical-align:middle;margin-right:8px;border-radius:6px;box-shadow:0 1px 4px #0001;"> <b>${item.nombre}</b> x${item.cantidad} <span style="color:#38b6ff;font-weight:bold;">$${(item.precio*item.cantidad).toFixed(2)}</span> <button style="margin-left:8px;" onclick="this.parentNode.remove();carrito.splice(${idx},1);renderCarrito();">❌</button>`;
+                                                                        carritoLista.appendChild(li);
+                                                                    });
+                                                                    carritoTotal.textContent = total.toFixed(2);
+                                                                    navCartBadge.textContent = cantidad;
+                                                                    if (carrito.length === 0) {
+                                                                        carritoLista.innerHTML = '<li style="color:#888;">No hay productos en el carrito.</li>';
+                                                                    }
+                                                                    // Habilitar o deshabilitar botón de compra
+                                                                    document.getElementById('carrito-comprar').disabled = carrito.length === 0;
+                                                                }
+                                                                document.querySelectorAll('.btn-agregar').forEach(btn => {
+                                                                    btn.addEventListener('click', function(e) {
+                                                                        const card = this.closest('.producto-card');
+                                                                        const nombre = card.getAttribute('data-nombre');
+                                                                        const precio = parseFloat(card.getAttribute('data-precio'));
+                                                                        const img = card.getAttribute('data-img');
+                                                                        let prod = carrito.find(p => p.nombre === nombre);
+                                                                        if (prod) {
+                                                                            prod.cantidad++;
+                                                                        } else {
+                                                                            carrito.push({nombre, precio, img, cantidad:1});
+                                                                        }
+                                                                        renderCarrito();
+                                                                        // Animación visual al agregar
+                                                                        card.classList.add('agregado');
+                                                                        setTimeout(()=>card.classList.remove('agregado'), 500);
+                                                                    });
+                                                                });
+                                                                navCartIcon.onclick = () => {
+                                                                    carritoDiv.classList.toggle('abierto');
+                                                                };
+                                                                carritoVaciar.onclick = () => {
+                                                                    carrito.length = 0;
+                                                                    renderCarrito();
+                                                                };
+                                                                document.getElementById('carrito-comprar').onclick = async function() {
+                                                                    const token = localStorage.getItem('token');
+                                                                    if (!token) {
+                                                                        alert('Debes iniciar sesión para comprar.');
+                                                                        return;
+                                                                    }
+                                                                    if (carrito.length === 0) return;
+                                                                    const items = carrito.map(p => ({ nombre: p.nombre, cantidad: p.cantidad, precio: p.precio }));
+                                                                    const total = items.reduce((acc, p) => acc + p.precio * p.cantidad, 0);
+                                                                    const res = await fetch('/api/purchases', {
+                                                                        method: 'POST',
+                                                                        headers: {
+                                                                            'Content-Type': 'application/json',
+                                                                            'Authorization': 'Bearer ' + token
+                                                                        },
+                                                                        body: JSON.stringify({ items, total })
+                                                                    });
+                                                                    if (res.ok) {
+                                                                        alert('¡Compra realizada con éxito!');
+                                                                        carrito.length = 0;
+                                                                        renderCarrito();
+                                                                        cargarHistorial();
+                                                                    } else {
+                                                                        const data = await res.json();
+                                                                        alert('Error al comprar: ' + (data.error || '')); 
+                                                                    }
+                                                                };
+                                                                renderCarrito();
                                 </script>
-            </section>
+                        </section>
+                                    <!-- Sección Preguntas frecuentes -->
+                                    <section id="faq" style="margin:40px auto 0 auto;max-width:900px;background:#fff;border-radius:16px;box-shadow:0 2px 12px #4f8cff11;padding:32px 18px 24px 18px;">
+                                        <h2 style="color:#38b6ff;margin-bottom:12px;">Preguntas frecuentes</h2>
+                                        <ul style="color:#333;font-size:1.1rem;line-height:1.7;">
+                                            <li><b>¿Cómo compro un repuesto?</b> Selecciona el producto, agrégalo al carrito y sigue el proceso de compra.</li>
+                                            <li><b>¿Qué métodos de pago aceptan?</b> Tarjeta de crédito, débito y transferencias.</li>
+                                            <li><b>¿Hacen envíos?</b> Sí, a todo el país.</li>
+                                            <li><b>¿Puedo devolver un producto?</b> Sí, dentro de los 15 días posteriores a la compra.</li>
+                                            <li><b>¿Cómo contacto soporte?</b> Usa el formulario de contacto o el correo soporte@turbobujias.com.</li>
+                                        </ul>
+                                    </section>
+                                    <!-- Sección Mi cuenta -->
+                                                                        <section id="micuenta" style="margin:40px auto 0 auto;max-width:600px;background:#fff;border-radius:16px;box-shadow:0 2px 12px #4f8cff11;padding:32px 18px 24px 18px;">
+                                                                                <h2 style="color:#38b6ff;margin-bottom:12px;">Mi cuenta</h2>
+                                                                                <div id="cuenta-estado">
+                                                                                    <div id="cuenta-no-session">
+                                                                                        <p style="color:#333;font-size:1.1rem;">Accede o regístrate para ver tu historial y datos.</p>
+                                                                                        <form id="loginForm" style="margin-top:18px;display:flex;flex-direction:column;gap:12px;max-width:340px;">
+                                                                                            <input type="text" id="loginUsername" placeholder="Usuario" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                                                                            <input type="password" id="loginPassword" placeholder="Contraseña" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                                                                            <button type="submit" class="btn-agregar" style="width:fit-content;align-self:end;">Entrar</button>
+                                                                                            <span id="loginMsg" style="color:#e74c3c;font-size:0.98rem;"></span>
+                                                                                        </form>
+                                                                                        <details style="margin-top:10px;">
+                                                                                            <summary style="cursor:pointer;color:#38b6ff;">¿No tienes cuenta? Regístrate</summary>
+                                                                                            <form id="registerForm" style="margin-top:10px;display:flex;flex-direction:column;gap:12px;max-width:340px;">
+                                                                                                <input type="text" id="regUsername" placeholder="Usuario" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                                                                                <input type="password" id="regPassword" placeholder="Contraseña" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                                                                                <button type="submit" class="btn-agregar" style="width:fit-content;align-self:end;">Registrarme</button>
+                                                                                                <span id="registerMsg" style="color:#38b6ff;font-size:0.98rem;"></span>
+                                                                                            </form>
+                                                                                        </details>
+                                                                                    </div>
+                                                                                    <div id="cuenta-session" style="display:none;">
+                                                                                        <p style="color:#333;font-size:1.1rem;">Bienvenido, <b id="cuenta-usuario"></b></p>
+                                                                                        <button id="logoutBtn" class="btn-agregar" style="background:#e74c3c;">Cerrar sesión</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <script>
+                                                                                // Lógica de autenticación real para Mi cuenta
+                                                                                function setCuentaUI() {
+                                                                                    const token = localStorage.getItem('token');
+                                                                                    const user = localStorage.getItem('usuario');
+                                                                                    document.getElementById('cuenta-no-session').style.display = token ? 'none' : 'block';
+                                                                                    document.getElementById('cuenta-session').style.display = token ? 'block' : 'none';
+                                                                                    if (token && user) {
+                                                                                        document.getElementById('cuenta-usuario').textContent = user;
+                                                                                    }
+                                                                                      // Proteger compras
+                                                                                      document.getElementById('compras').style.display = token ? 'block' : 'none';
+                                                                                }
+                                                                                document.getElementById('loginForm').onsubmit = async function(e) {
+                                                                                    e.preventDefault();
+                                                                                    const username = document.getElementById('loginUsername').value;
+                                                                                    const password = document.getElementById('loginPassword').value;
+                                                                                    const res = await fetch('/api/users/login', {
+                                                                                        method: 'POST',
+                                                                                        headers: { 'Content-Type': 'application/json' },
+                                                                                        body: JSON.stringify({ username, password })
+                                                                                    });
+                                                                                    const data = await res.json();
+                                                                                    if(res.ok && data.token) {
+                                                                                        localStorage.setItem('token', data.token);
+                                                                                        localStorage.setItem('usuario', username);
+                                                                                        document.getElementById('loginMsg').textContent = 'Login exitoso';
+                                                                                        setCuentaUI();
+                                                                                        this.reset();
+                                                                                    } else {
+                                                                                        document.getElementById('loginMsg').textContent = data.error || 'Error';
+                                                                                    }
+                                                                                };
+                                                                                document.getElementById('registerForm').onsubmit = async function(e) {
+                                                                                    e.preventDefault();
+                                                                                    const username = document.getElementById('regUsername').value;
+                                                                                    const password = document.getElementById('regPassword').value;
+                                                                                    const res = await fetch('/api/users/register', {
+                                                                                        method: 'POST',
+                                                                                        headers: { 'Content-Type': 'application/json' },
+                                                                                        body: JSON.stringify({ username, password })
+                                                                                    });
+                                                                                    const data = await res.json();
+                                                                                    document.getElementById('registerMsg').textContent = data.message || data.error;
+                                                                                    if(res.ok) this.reset();
+                                                                                };
+                                                                                document.getElementById('logoutBtn').onclick = function() {
+                                                                                    localStorage.removeItem('token');
+                                                                                    localStorage.removeItem('usuario');
+                                                                                    setCuentaUI();
+                                                                                };
+                                                                                setCuentaUI();
+                                                                                // Cargar historial real de compras
+                                                                                async function cargarHistorial() {
+                                                                                    const token = localStorage.getItem('token');
+                                                                                    if (!token) return;
+                                                                                    const res = await fetch('/api/purchases/history', {
+                                                                                        headers: { 'Authorization': 'Bearer ' + token }
+                                                                                    });
+                                                                                    if (!res.ok) return;
+                                                                                    const data = await res.json();
+                                                                                    const tbody = document.querySelector('#compras tbody');
+                                                                                    tbody.innerHTML = '';
+                                                                                    if (data.purchases.length === 0) {
+                                                                                        tbody.innerHTML = '<tr><td colspan="4" style="color:#888;text-align:center;">No hay compras registradas.</td></tr>';
+                                                                                    } else {
+                                                                                        data.purchases.forEach(compra => {
+                                                                                            compra.items.forEach(item => {
+                                                                                                tbody.innerHTML += `<tr><td>${new Date(compra.date).toLocaleDateString()}</td><td>${item.nombre}</td><td>${item.cantidad}</td><td>$${(item.precio*item.cantidad).toFixed(2)}</td></tr>`;
+                                                                                            });
+                                                                                        });
+                                                                                    }
+                                                                                    document.querySelector('#compras p').style.display = 'none';
+                                                                                }
+                                                                                // Mostrar historial real al mostrar sección
+                                                                                document.querySelector('a[href="#compras"]').addEventListener('click', cargarHistorial);
+                                                                                </script>
+                                                                        </section>
+                                    <!-- Sección Historial de compras -->
+                                    <section id="compras" style="margin:40px auto 0 auto;max-width:900px;background:#fff;border-radius:16px;box-shadow:0 2px 12px #4f8cff11;padding:32px 18px 24px 18px;display:none;">
+                                        <h2 style="color:#38b6ff;margin-bottom:12px;">Mis compras</h2>
+                                        <table style="width:100%;border-collapse:collapse;">
+                                            <thead><tr style="background:#e0f7fa;"><th>Fecha</th><th>Producto</th><th>Cantidad</th><th>Total</th></tr></thead>
+                                            <tbody>
+                                                <!-- Las filas se llenan dinámicamente -->
+                                            </tbody>
+                                        </table>
+                                        <p style="color:#888;font-size:0.95rem;margin-top:8px;">* El historial se carga automáticamente al realizar compras.</p>
+                                    </section>
+                                    <!-- Sección de contacto -->
+                                    <section id="contacto" style="margin:40px auto 0 auto;max-width:600px;background:#fff;border-radius:16px;box-shadow:0 2px 12px #4f8cff11;padding:32px 18px 24px 18px;">
+                                        <h2 style="color:#38b6ff;margin-bottom:12px;">Contacto</h2>
+                                        <p style="color:#333;font-size:1.1rem;">¿Tienes dudas o necesitas ayuda? Escríbenos a <a href="mailto:soporte@turbobujias.com" style="color:#4f8cff;font-weight:bold;">soporte@turbobujias.com</a> o llama al <b>1-888-800-9629</b>.</p>
+                                        <form style="margin-top:18px;display:flex;flex-direction:column;gap:12px;">
+                                            <input type="text" placeholder="Nombre" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                            <input type="email" placeholder="Correo electrónico" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;">
+                                            <textarea placeholder="Mensaje" required style="padding:10px 12px;border-radius:8px;border:1px solid #d1d5db;min-height:80px;"></textarea>
+                                            <button type="submit" class="btn-agregar" style="width:fit-content;align-self:end;">Enviar</button>
+                                        </form>
+                                        <div class="social-icons">
+                                            <a href="https://facebook.com/turbobujias" target="_blank" title="Facebook"><span aria-hidden="true">&#x1F426;</span></a>
+                                            <a href="https://instagram.com/turbobujias" target="_blank" title="Instagram"><span aria-hidden="true">&#x1F33F;</span></a>
+                                            <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><span aria-hidden="true">&#x1F4F1;</span></a>
+                                        </div>
+                                    </section>
         </main>
     </div>
 </body>

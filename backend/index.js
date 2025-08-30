@@ -5,9 +5,10 @@ import mongoose from 'mongoose';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-import authRoutes from './routes/auth.js';
+
 import userRoutes from './routes/users.js';
 import inventoryRoutes from './routes/inventory.js';
+import purchasesRoutes from './routes/purchases.js';
 
 
 const app = express();
@@ -27,7 +28,9 @@ mongoose.connect(MONGODB_URI, {
 }).then(() => console.log('MongoDB conectado')).catch(err => console.error('MongoDB error', err));
 
 
+
 app.use('/api/inventory', inventoryRoutes);
+app.use('/api/purchases', purchasesRoutes);
 
 
 // Servir index.html para la ruta principal
