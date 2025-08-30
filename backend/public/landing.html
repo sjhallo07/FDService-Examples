@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="html-home-page home-body">
+<head>
+    <title>Turbobujias - Landing Demo</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oxygen:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="html-home-page home-body">
+    <div class="master-wrapper-page">
+        <div class="header">
+            <div class="header-upper-wrapper row">
+                <div class="header-upper">
+                    <div class="header-selectors-wrapper">
+                        <div class="header-links">
+                            <ul>
+                                <li><a href="tel:1-888-800-9629" class="header-links__support-phone"><strong>1-888-800-9629</strong></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-links-wrapper">
+                        <div class="header-links">
+                            <ul>
+                                <li class="header-links-login">
+                                    <a href="#" class="ico-register">Crear cuenta</a>
+                                    <span>|</span>
+                                    <a href="#" class="ico-login">Iniciar sesión</a>
+                                </li>
+                                <li class="header-links-cart js-topcartlink">
+                                    <div class="header-shopping-cart">
+                                        <div class="cart-button-container">
+                                            <span><strong>Carrito</strong></span>
+                                            <button class="shopping-cart-button"></button>
+                                        </div>
+                                        <div id="flyout-cart" class="flyout-cart">
+                                            <div class="mini-shopping-cart">
+                                                <div class="mini-shopping-cart-header">
+                                                    <h2>Mi carrito</h2>
+                                                </div>
+                                                <div class="count">No hay productos en el carrito.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-upper header-upper--mobile">
+                    <div class="header-selectors-wrapper">
+                        <div class="header-links">
+                            <ul>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#" class="ico-login">Iniciar sesión</a></li>
+                                <li><a href="#" class="ico-register">Crear cuenta</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subheader-wrapper">
+                <div class="subheader-wrapper-content">
+                    <div class="responsive-menu-wrapper"><button class="responsive-menu-toggle"></button></div>
+                    <div class="logo-wrapper">
+                        <div class="header-logo">
+                            <a href="/">
+                                <img alt="Turbobujias" src="/logo-turbobujias.png" style="height:60px;width:auto;border-radius:12px;box-shadow:0 2px 8px #0001;"/>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="header-menu-wrapper">
+                        <div class="header-mega-menu">
+                            <ul class="mega-menu">
+                                <li class="has-sublist">
+                                    <span class="with-subcategories">Aplicaciones</span>
+                                    <div class="dropdown categories fullWidth boxes-1">
+                                        <div class="row-wrapper">
+                                            <div class="title">Aplicación</div>
+                                            <ul class="application">
+                                                <li><a href="#"><span>Automotriz</span></a></li>
+                                                <li><a href="#"><span>Powersports</span></a></li>
+                                                <li><a href="#"><span>Recreación</span></a></li>
+                                                <li><a href="#"><span>Marino</span></a></li>
+                                                <li><a href="#"><span>Jardín</span></a></li>
+                                                <li><a href="#"><span>Industrial</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <div class="title">Categoría</div>
+                                            <ul class="categories">
+                                                <li><a href="#"><span>Bujías</span></a></li>
+                                                <li><a href="#"><span>Filtros</span></a></li>
+                                                <li><a href="#"><span>Sensores</span></a></li>
+                                                <li><a href="#"><span>Motor</span></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="menu-block">
+                                            <div class="title">Marca</div>
+                                            <ul class="categories">
+                                                <li><a href="#"><span>NGK</span></a></li>
+                                                <li><a href="#"><span>Bosch</span></a></li>
+                                                <li><a href="#"><span>Denso</span></a></li>
+                                                <li><a href="#"><span>Champion</span></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="#"><span>Garage Gear</span></a></li>
+                                <li><a href="#"><span>Merchandise</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="subheader-right">
+                        <div class="responsive-nav-search-wrapper">
+                            <div class="responsive-nav-wrapper">
+                                <div class="search-box store-search-box">
+                                    <form method="get" class="small-search-box-form" id="small-search-box-form" action="#">
+                                        <input type="text" class="search-box-text small-searchterms" id="small-searchterms" autocomplete="off" name="q" placeholder="Buscar..." aria-label="Buscar" />
+                                        <button type="submit" class="search-button"><span class="fa fa-search"></span><span class="sr-only">Buscar</span></button>
+                                    </form>
+                                </div>
+                                <button class="search-button-responsive"><span class="fa fa-search"></span></button>
+                            </div>
+                        </div>
+                        <div class="header-shopping-cart header-shopping-cart--mobile">
+                            <a class="shopping-cart-button" href="#">
+                                <span class="fa fa-shopping-cart"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main class="master-wrapper-content">
+            <!-- Aquí puedes agregar tu landing personalizada, banners, sliders, etc. -->
+            <section style="padding:40px 0;text-align:center;">
+                <h1 style="font-family:Montserrat;font-size:2.5rem;">Bienvenido a Turbobujias</h1>
+                <p style="font-size:1.2rem;max-width:600px;margin:auto;">Esta es una estructura base tipo Turbobujias. Aquí puedes agregar módulos, banners, inventario, formularios o cualquier contenido personalizado.</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

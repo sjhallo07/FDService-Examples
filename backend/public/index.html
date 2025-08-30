@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en"  class="html-home-page home-body">
+<head>
+    <title>SparkPlugs.com</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="generator" content="nopCommerce" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/app.css">
+</head>
+<body class="html-home-page home-body">
+    <!DOCTYPE html>
+    <!-- Archivo principal de Turbobujias, generado automáticamente -->
+    <!-- Redirige a landing.html para mantener la estructura principal -->
+    <html lang="es">
+    <head>
+        <meta http-equiv="refresh" content="0; url=/landing.html" />
+        <title>Turbobujias</title>
+    </head>
+    <body>
+        <p>Redirigiendo a la página principal de Turbobujias...</p>
+    </body>
+    </html>
+                    // Filtro de búsqueda
+                    let filtered = Array.isArray(data) ? data.filter(item =>
+                        item.sku.toLowerCase().includes(invSearch) ||
+                        item.nombre.toLowerCase().includes(invSearch)
+                    ) : [];
+                    // Paginación
+                    const total = filtered.length;
+                    const totalPages = Math.ceil(total / invPageSize) || 1;
+                    if(invPage > totalPages) invPage = totalPages;
+                    const start = (invPage - 1) * invPageSize;
+                    const end = start + invPageSize;
+                    const pageData = filtered.slice(start, end);
+                    inv.innerHTML = `
+                        <form id="addInvForm" style="margin-bottom:18px;display:flex;gap:8px;flex-wrap:wrap;align-items:end;">
+                            <input type="text" id="invSku" placeholder="SKU" required style="width:90px;">
+                            <input type="text" id="invNombre" placeholder="Nombre" required style="width:160px;">
+                            <input type="number" id="invStock" placeholder="Stock" required min="0" style="width:70px;">
+                            <input type="number" id="invPrecio" placeholder="Precio" required min="0" step="0.01" style="width:90px;">
+                            <button type="submit">Agregar</button>
+                            <span id="invMsg" style="margin-left:10px;"></span>
+                        </form>
+                        <input type="text" id="invSearchBox" placeholder="Buscar por SKU o nombre..." style="width:100%;margin-bottom:10px;padding:8px 12px;border-radius:6px;border:1px solid #d1d5db;">
+                        <table style="width:100%;border-collapse:collapse;">
+                            <thead><tr style='background:#f1f5fa;'><th>SKU</th><th>Nombre</th><th>Stock</th><th>Precio</th><th>Acciones</th></tr></thead>
+                            <tbody>
+                            ${pageData.length ? pageData.map(item => `<tr>
+                                <td>${item.sku}</td>
+                                <td><input type='text' value='${item.nombre}' id='nombre-${item.sku}' style='width:120px;'></td>
+                                <td><input type='number' value='${item.stock}' id='stock-${item.sku}' style='width:60px;'></td>
+                                <td><input type='number' value='${item.precio}' id='precio-${item.sku}' style='width:80px;'></td>
+                                <td>
+                                    <button onclick="updateInv('${item.sku}')">Actualizar</button>
+                                    <button onclick="deleteInv('${item.sku}')" style='background:#e74c3c;'>Eliminar</button>
+                                </td>
+                            </tr>`).join('') : '<tr><td colspan=5>No hay productos</td></tr>'}
+                            </tbody></table>
+                            <div style="margin-top:10px;display:flex;justify-content:center;align-items:center;gap:8px;">
+                                <button onclick="invPrevPage()" ${invPage<=1?'disabled':''}>Anterior</button>
+                                <span style="font-size:1rem;">Página ${invPage} de ${totalPages}</span>
+                                <button onclick="invNextPage()" ${invPage>=totalPages?'disabled':''}>Siguiente</button>
+                            </div>
+                    `;
+                    document.getElementById('addInvForm').onsubmit = async function(e) {
+                        e.preventDefault();
+                        const sku = document.getElementById('invSku').value.trim();
+                        const nombre = document.getElementById('invNombre').value.trim();
+                        const stock = document.getElementById('invStock').value;
+                        const precio = document.getElementById('invPrecio').value;
+                        if(!sku || !nombre || stock === '' || precio === '' || isNaN(stock) || isNaN(precio) || Number(stock)<0 || Number(precio)<0) {
+                            document.getElementById('invMsg').textContent = 'Datos inválidos';
+                            return;
+                        }
+                        const res = await fetch('/api/inventory', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ sku, nombre, stock, precio })
+                        });
+                        const data = await res.json();
+                        document.getElementById('invMsg').textContent = data.message || data.error;
+                        if(res.ok) {
+                            this.reset();
+                            setTimeout(renderInventory, 500);
+                        }
+                    };
+                    document.getElementById('invSearchBox').value = invSearch;
+                    document.getElementById('invSearchBox').oninput = function() {
+                        invSearch = this.value.toLowerCase();
+                        invPage = 1;
+                        renderInventory();
+                    };
+                }
+                window.invPrevPage = function() {
+                    if(invPage>1) { invPage--; renderInventory(); }
+                };
+                window.invNextPage = function() {
+                    invPage++; renderInventory();
+                };
+                window.updateInv = async function(sku) {
+                    const nombre = document.getElementById('nombre-' + sku).value.trim();
+                    const stock = document.getElementById('stock-' + sku).value;
+                    const precio = document.getElementById('precio-' + sku).value;
+                    if(!nombre || stock === '' || precio === '' || isNaN(stock) || isNaN(precio) || Number(stock)<0 || Number(precio)<0) {
+                        alert('Datos inválidos'); return;
+                    }
+                    const res = await fetch('/api/inventory/' + sku, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ nombre, stock, precio })
+                    });
+                    if(res.ok) renderInventory();
+                    else alert('Error al actualizar');
+                };
+                window.deleteInv = async function(sku) {
+                    if(!confirm('¿Eliminar producto ' + sku + '?')) return;
+                    const res = await fetch('/api/inventory/' + sku, { method: 'DELETE' });
+                    if(res.ok) renderInventory();
+                    else alert('Error al eliminar');
+                };
+                renderInventory();
+            let authToken = '';
+            document.getElementById('registerForm').onsubmit = async function(e) {
+                e.preventDefault();
+                const username = document.getElementById('regUsername').value;
+                const password = document.getElementById('regPassword').value;
+                const res = await fetch('/api/users/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                document.getElementById('registerMsg').textContent = data.message || data.error;
+                if(res.ok) this.reset();
+            };
+            document.getElementById('loginForm').onsubmit = async function(e) {
+                e.preventDefault();
+                const username = document.getElementById('loginUsername').value;
+                const password = document.getElementById('loginPassword').value;
+                const res = await fetch('/api/users/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await res.json();
+                if(res.ok && data.token) {
+                    authToken = data.token;
+                    document.getElementById('loginMsg').textContent = 'Login exitoso';
+                    this.reset();
+                } else {
+                    document.getElementById('loginMsg').textContent = data.error || 'Error';
+                }
+            };
+            document.getElementById('loadUsersBtn').onclick = async function() {
+                if(!authToken) { alert('Primero inicia sesión'); return; }
+                const res = await fetch('/api/users', {
+                    headers: { 'Authorization': 'Bearer ' + authToken }
+                });
+                const users = await res.json();
+                const ul = document.getElementById('usersList');
+                ul.innerHTML = '';
+                if(Array.isArray(users)) {
+                    users.forEach(u => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<b>${u.username}</b> ` +
+                            `<button onclick="showDetails('${u.username}')">Ver</button> ` +
+                            `<button onclick="showEdit('${u.username}')">Editar</button> ` +
+                            `<button onclick="deleteUser('${u.username}')">Eliminar</button>`;
+                        ul.appendChild(li);
+                    });
+                } else {
+                    ul.innerHTML = '<li>No autorizado o error</li>';
+                }
+            };
+
+            window.showDetails = async function(username) {
+                if(!authToken) return;
+                const res = await fetch(`/api/users/${username}`, {
+                    headers: { 'Authorization': 'Bearer ' + authToken }
+                });
+                const data = await res.json();
+                const div = document.getElementById('userDetails');
+                if(res.ok) {
+                    div.style.display = 'block';
+                    div.innerHTML = `<b>Usuario:</b> ${data.username}<br><b>Creado:</b> ${new Date(data.createdAt).toLocaleString()}<br><b>Actualizado:</b> ${new Date(data.updatedAt).toLocaleString()}`;
+                } else {
+                    div.style.display = 'block';
+                    div.innerHTML = 'No encontrado o error';
+                }
+            };
+
+            window.showEdit = function(username) {
+                document.getElementById('editUserDiv').style.display = 'block';
+                document.getElementById('editUsername').value = username;
+                document.getElementById('editPassword').value = '';
+                document.getElementById('editUserMsg').textContent = '';
+            };
+
+            document.getElementById('editUserForm').onsubmit = async function(e) {
+                e.preventDefault();
+                const username = document.getElementById('editUsername').value;
+                const password = document.getElementById('editPassword').value;
+                const res = await fetch(`/api/users/${username}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + authToken
+                    },
+                    body: JSON.stringify({ password })
+                });
+                const data = await res.json();
+                document.getElementById('editUserMsg').textContent = data.message || data.error;
+                if(res.ok) {
+                    setTimeout(()=>{
+                        document.getElementById('editUserDiv').style.display = 'none';
+                        document.getElementById('loadUsersBtn').click();
+                    }, 1000);
+                }
+            };
+
+            window.deleteUser = async function(username) {
+                if(!confirm('¿Eliminar usuario ' + username + '?')) return;
+                const res = await fetch(`/api/users/${username}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': 'Bearer ' + authToken }
+                });
+                const data = await res.json();
+                alert(data.message || data.error);
+                document.getElementById('loadUsersBtn').click();
+            };
+            </script>
+</head>
+<body class="html-home-page home-body">
+    <!-- ...existing code... -->
+</body>
+</html>
